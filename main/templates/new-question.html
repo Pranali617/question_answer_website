@@ -1,0 +1,41 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+<div class="page new-question-page">
+<h1 class="title">New question</h1>
+
+
+<form method="POST" action="" class="new-question-form">
+  {% csrf_token %}
+<div class="fieldWrapper">
+  <label for="{{form.title.id_for_label}}">Title:</label>
+  {{form.title}}
+  <span class="error">{{form.title.errors}}</span>
+</div>
+<div class="fieldWrapper">
+  <label for="{{form.body.id_for_label}}">Body:</label>
+  {{form.body}}
+  <span class="error">{{form.body.errors}}</span>
+</div>
+<input type="submit" value="Submit" class="submit-button"/>
+</form>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#question-form").on("submit", function(e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        // Here, you can add code to send the form data to the server via AJAX if needed
+
+        // Display a popup
+        alert("Form submitted successfully!");
+
+        // You can also close the popup or redirect the user after showing the popup
+    });
+});
+</script>
+{% endblock %}
